@@ -1,11 +1,22 @@
 class TvShow < ApplicationRecord
-	def timing
-    time_strf(read_attribute(:timing)) if read_attribute(:timing).present?
+	belongs_to :channel
+
+	def start_time
+    time_strf(read_attribute(:start_time)) if read_attribute(:start_time).present?
   end
 
-  def timing=(value)
-    write_attribute(:timing, Time.parse(value).seconds_since_midnight) if value.present?
+  def start_time=(value)
+    write_attribute(:start_time, Time.parse(value).seconds_since_midnight) if value.present?
   end
+
+  def end_time
+    time_strf(read_attribute(:end_time)) if read_attribute(:end_time).present?
+  end
+
+  def end_time=(value)
+    write_attribute(:end_time, Time.parse(value).seconds_since_midnight) if value.present?
+  end
+
 
   def time_strf(time_digit)
     (Time.now.at_midnight + time_digit).strftime("%H:%M")
