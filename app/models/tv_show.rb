@@ -1,5 +1,7 @@
 class TvShow < ApplicationRecord
 	belongs_to :channel
+  has_many :favourites
+  has_many :users, through: :favourites
 
 	def start_time
     time_strf(read_attribute(:start_time)) if read_attribute(:start_time).present?

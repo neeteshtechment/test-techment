@@ -1,0 +1,25 @@
+<br>
+<h3>My Favourite</h3>
+<br>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Start Time</th>
+    <th scope="col">End Time</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @favourites.each_with_index do |favourite, index| %>
+    <tr>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= favourite.name %></td>
+      <td><%= favourite.start_time %></td>
+      <td><%= favourite.end_time %></td>
+    <tr>
+  <% end %>
+</tbody>
+</table>
