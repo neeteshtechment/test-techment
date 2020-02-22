@@ -17,8 +17,11 @@ class TvShow < ApplicationRecord
     write_attribute(:end_time, Time.parse(value).seconds_since_midnight) if value.present?
   end
 
-
   def time_strf(time_digit)
     (Time.now.at_midnight + time_digit).strftime("%H:%M")
+  end
+
+  def self.required_data(query)
+    TvShow.joins(:channel).select('tv_shows.*, channels.name as channel_name').where("channels.name LIKE '%#{query}%' OR tv_shows.name LIKE '%#{query}%'")
   end
 end
