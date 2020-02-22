@@ -5,6 +5,7 @@
     <th scope="col">Channel Name</th>
     <th scope="col">Start Time</th>
     <th scope="col">End Time</th>
+    <th scope="col">Mark Favourite</th>
   </tr>
 </thead>
 <tbody>
@@ -15,6 +16,7 @@
       <td><%= tv_show.channel_name %></td>
       <td><%= tv_show.start_time %></td>
       <td><%= tv_show.end_time %></td>
+      <td><%= link_to "Favourite", favourite_tv_show_path(tv_show.id) %></td>
     <tr>
   <% end %>
 </tbody>
